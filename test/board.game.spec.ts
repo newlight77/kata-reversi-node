@@ -12,6 +12,13 @@ const initialState: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
 ];
 
+const boardToString = (board: Board) =>
+    board.map((row) => row.join(" ").toString())
+        .join(`
+`).toString();
+
+
+
 export class BoardGame {
     state: Board;
     
@@ -20,7 +27,7 @@ export class BoardGame {
     }
 
     display(): string {
-       return this.state.toString();
+       return boardToString(this.state);
     }
 }
 
@@ -65,6 +72,6 @@ describe("Display board", function () {
         const displayedBoard = board.display();
 
         // Assert
-        expect(displayedBoard).toEqual(expectedBoard.toString());
+        expect(displayedBoard).toEqual(boardToString(expectedBoard));
     });
 });
