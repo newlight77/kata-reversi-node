@@ -1,35 +1,4 @@
-type Row = string[];
-export type Board = Row[];
-
-const initialState: Board = [
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", "B", "W", ".", ".", "."],
-    [".", ".", ".", "W", "B", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-];
-
-const boardToString = (board: Board) =>
-    board.map((row) => row.join(" ").toString())
-        .join(`
-`).toString();
-
-
-
-export class BoardGame {
-    state: Board;
-    
-    constructor(state = initialState) {
-        this.state = state;
-    }
-
-    display(): string {
-       return boardToString(this.state);
-    }
-}
+import { type Board, BoardGame, boardToString } from "../../src/index";
 
 describe("Display board", function () {
     test("Should return an empty board", function () {
