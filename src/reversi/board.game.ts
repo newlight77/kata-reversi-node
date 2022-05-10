@@ -1,7 +1,7 @@
 type Row = string[];
 export type Board = Row[];
 
-const initialState: Board = [
+const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
     [".", ".", ".", ".", ".", ".", ".", "."],
     [".", ".", ".", ".", ".", ".", ".", "."],
@@ -20,13 +20,13 @@ export const boardToString = (board: Board) =>
 
 
 export class BoardGame {
-    state: Board;
+    board: Board;
     
-    constructor(state = initialState) {
-        this.state = state;
+    constructor(board = initialBoard) {
+        this.board = board;
     }
 
     display(): string {
-       return boardToString(this.state);
+       return boardToString(this.board);
     }
 }

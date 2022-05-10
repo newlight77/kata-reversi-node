@@ -3,10 +3,10 @@ import { type Board, BoardGame, boardToString } from "../../src/index";
 describe("Display board", function () {
     test("Should return an empty board", function () {
         // Arrange
-        const board = new BoardGame();
+        const gameBoard = new BoardGame();
 
         // Act 
-        const displayedBoard = board.display();
+        const displayedBoard = gameBoard.display();
 
         // Assert
         expect(displayedBoard).toEqual(expect.any(String));
@@ -35,10 +35,10 @@ describe("Display board", function () {
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
-        const board = new BoardGame(initialBoard);
+        const gameBoard = new BoardGame(initialBoard);
 
         // Act 
-        const displayedBoard = board.display();
+        const displayedBoard = gameBoard.display();
 
         // Assert
         expect(displayedBoard).toEqual(boardToString(expectedBoard));
