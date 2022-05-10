@@ -30,3 +30,15 @@ export class BoardGame {
        return boardToString(this.board);
     }
 }
+
+export class Game {
+    gameBoard: BoardGame;
+  
+    constructor(gameBoard: BoardGame) {
+      this.gameBoard = gameBoard;
+    }
+
+    play(board = this.gameBoard.board): Board {
+        return board;
+    }
+}
