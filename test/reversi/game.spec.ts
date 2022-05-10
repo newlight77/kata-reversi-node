@@ -1,18 +1,11 @@
-import { type Board, BoardGame, Game, boardToString } from "../../src/index";
+import { type Board, BoardGame, Game, boardToString, Player } from "../../src/index";
 
 
 describe("Display board in a game play", function () {
-    let game: Game;
-    let boardGame: BoardGame;
-
-    beforeAll(() => {
-        boardGame = new BoardGame();
-        game = new Game(boardGame);
-    });
   
     test("Should display board properly when playing", function () {
         // Arrange
-        const initialBoard: Board = [
+        const board: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
@@ -33,11 +26,47 @@ describe("Display board in a game play", function () {
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
 
-        const boardGame = new BoardGame();
-        const game = new Game(boardGame);
+        const playerB = "B";
+        const boardGame = new BoardGame(board);
+        const game = new Game(boardGame, playerB);
 
         // Act
-        const displayedBoard = game.play(initialBoard)
+        const displayedBoard = game.play()
+
+        // Assert
+        expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));
+    });
+
+    test("Should suggest legal moves for the turn of player with black", function () {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+        const expectedBoard: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", "0", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+
+
+        const playerB = "B";
+        const boardGame = new BoardGame(board);
+        const game = new Game(boardGame, playerB);
+
+        // Act
+        const displayedBoard = game.play()
 
         // Assert
         expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));

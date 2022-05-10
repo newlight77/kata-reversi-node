@@ -1,6 +1,11 @@
 type Row = string[];
 export type Board = Row[];
 
+
+//export const PlayerB = "B";
+//export const PlayerW = "W";
+export type Player = "B" | "W";
+
 const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
     [".", ".", ".", ".", ".", ".", ".", "."],
@@ -33,12 +38,14 @@ export class BoardGame {
 
 export class Game {
     gameBoard: BoardGame;
+    player: Player;
   
-    constructor(gameBoard: BoardGame) {
+    constructor(gameBoard: BoardGame, player: Player) {
       this.gameBoard = gameBoard;
+      this.player = player;
     }
 
-    play(board = this.gameBoard.board): Board {
-        return board;
+    play(): Board {
+        return this.gameBoard.board;
     }
 }
