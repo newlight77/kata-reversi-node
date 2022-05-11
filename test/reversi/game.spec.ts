@@ -60,7 +60,6 @@ describe("Display board in a game play", function () {
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
 
-
         const playerB = "B";
         const boardGame = new BoardGame(board);
         const game = new Game(boardGame, playerB);
@@ -70,6 +69,31 @@ describe("Display board in a game play", function () {
 
         // Assert
         expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));
+    });
+
+    test("Should change player at next turn from B to W", function() {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+
+        const currentPlayer = "B";
+        const boardGame = new BoardGame(board);
+        const game = new Game(boardGame, currentPlayer);
+
+
+        // Act
+        const nextPlayer = game.nextPlayer();
+
+        // Assert
+        expect(nextPlayer).toEqual("W");
     });
   
   });
