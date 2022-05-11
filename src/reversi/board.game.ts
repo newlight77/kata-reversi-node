@@ -30,6 +30,11 @@ export class BoardGame {
     display(): string {
        return boardToString(this.board);
     }
+
+    suggestNextMoves(player: Player): Board {
+        return this.board;
+    }
+
 }
 
 
@@ -37,17 +42,14 @@ export class Game {
     gameBoard: BoardGame;
     player: Player;
   
-    constructor(gameBoard: BoardGame, player: Player) {
+    constructor(gameBoard: BoardGame, player: Player = "B") {
       this.gameBoard = gameBoard;
       this.player = player;
     }
 
     play(): Board {
-        const nextBoard = this.suggestNextMoves(this.gameBoard.board)
+        const nextBoard = this.gameBoard.suggestNextMoves(this.player);
         return nextBoard;
     }
 
-    suggestNextMoves(board: Board): Board {
-        return board;
-    }
 }
