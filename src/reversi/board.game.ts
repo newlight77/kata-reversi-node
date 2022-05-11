@@ -13,40 +13,25 @@ const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
 ];
 
-
-export class BoardGame {
-    board: Board;
-    
-    constructor(board = initialBoard) {
-        this.board = board;
-    }
-
-    display(): string {
-       return boardToString(this.board);
-    }
-
-}
-
-
 export class Game {
-    gameBoard: BoardGame;
+    board: Board;
     player: Player;
   
-    constructor(gameBoard: BoardGame, player: Player = "B") {
-      this.gameBoard = gameBoard;
+    constructor(board: Board = initialBoard, player: Player = "B") {
+      this.board = board;
       this.player = player;
     }
 
     play(): Board {
         this.player = switchPlayer(this.player);
-        const nextBoard = suggestNextMoves(this.gameBoard.board, this.player);
+        const nextBoard = suggestNextMoves(this.board, this.player);
         return nextBoard;
     }
 
 }
 
 
-export const boardToString = (board: Board) =>
+export const displayBoard = (board: Board) =>
     board.map((row) => row.join(" ").toString())
         .join(`
 `).toString();

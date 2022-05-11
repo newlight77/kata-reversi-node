@@ -1,3 +1,3 @@
-import { Board, BoardGame, Game, boardToString, Player, switchPlayer, suggestNextMoves } from "./reversi/board.game";
+import { Board, Game, displayBoard, Player, switchPlayer, suggestNextMoves } from "./reversi/board.game";
 
-export { Board, BoardGame, Game, boardToString, Player, switchPlayer, suggestNextMoves }
+export { Board, Game, displayBoard, Player, switchPlayer, suggestNextMoves }
