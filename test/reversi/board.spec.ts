@@ -1,7 +1,7 @@
 import { type Board, displayBoard, suggestNextMoves } from "../../src/index";
 
 describe("Display board", function () {
-    test("Should return an empty board", function () {
+    test("Should display a board", function () {
         // Arrange
         const board: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],

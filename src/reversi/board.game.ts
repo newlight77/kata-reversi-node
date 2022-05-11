@@ -36,13 +36,12 @@ export const displayBoard = (board: Board) =>
         .join(`
 `).toString();
 
-
-export const suggestNextMoves = (board: Board, player: Player): Board => {
-    return board;
-}
-
-
 export const switchPlayer = (player: Player): Player => {
     if (player === "B") return "W";
     return "B";
+}
+
+export const suggestNextMoves = (board: Board, player: Player): Board => {
+    
+    return board;
 }

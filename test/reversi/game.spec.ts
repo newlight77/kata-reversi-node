@@ -10,7 +10,7 @@ describe("Display board in a game play", function () {
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", "B", "W", ".", ".", "."],
-            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "W", "B", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
@@ -18,10 +18,10 @@ describe("Display board in a game play", function () {
         const expectedBoard: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
-            [".", ".", ".", ".", ".", ".", ".", "."],
-            [".", ".", ".", "B", "W", ".", ".", "."],
-            [".", ".", ".", ".", ".", ".", ".", "."],
-            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", "0", ".", ".", "."],
+            [".", ".", ".", "B", "W", "0", ".", "."],
+            [".", ".", "0", "W", "B", ".", ".", "."],
+            [".", ".", ".", "0", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
@@ -36,29 +36,4 @@ describe("Display board in a game play", function () {
         expect(displayBoard(displayedBoard) ).toEqual(displayBoard(expectedBoard));
     });
 
-    test("Should change player at next turn from B to W", function() {
-        // Arrange
-        const board: Board = [];
-
-        const currentPlayer = "B";
-
-        // Act
-        const nextPlayer = switchPlayer(currentPlayer);
-
-        // Assert
-        expect(nextPlayer).toEqual("W");
-    });
-  
-    test("Should change player at next turn from W to B", function() {
-        // Arrange
-        const board: Board = [];
-
-        const currentPlayer = "W";
-
-        // Act
-        const nextPlayer = switchPlayer(currentPlayer);
-
-        // Assert
-        expect(nextPlayer).toEqual("B");
-    });
   });

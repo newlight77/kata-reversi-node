@@ -11,6 +11,7 @@
     "build": "npx tsc",
     "dev": "npx tsc --watch",
     "test": "jest",
+    "test:watch": "jest --watch",
     "start": "node dist/index.js"
   },
   "devDependencies": {
