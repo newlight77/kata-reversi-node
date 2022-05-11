@@ -48,8 +48,13 @@ export class Game {
     }
 
     play(): Board {
+        this.player = this.nextPlayer();
         const nextBoard = this.gameBoard.suggestNextMoves(this.player);
         return nextBoard;
+    }
+
+    nextPlayer(): Player {
+        return "B";
     }
 
 }
