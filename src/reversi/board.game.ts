@@ -54,6 +54,7 @@ export class Game {
     }
 
     nextPlayer(): Player {
+        if (this.player === "B") return "W";
         return "B";
     }
 
