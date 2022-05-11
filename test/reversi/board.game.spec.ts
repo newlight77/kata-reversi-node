@@ -43,4 +43,38 @@ describe("Display board", function () {
         // Assert
         expect(displayedBoard).toEqual(boardToString(expectedBoard));
     });
+
+
+    test("Should suggest legal moves for the next turn of player with black", function () {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+        const expectedBoard: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", "0", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+
+        const playerB = "B";
+        const boardGame = new BoardGame(board);
+
+        // Act
+        const displayedBoard = boardGame.suggestNextMoves(playerB);
+
+        // Assert
+        expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));
+    });
 });
