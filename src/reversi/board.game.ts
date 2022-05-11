@@ -1,9 +1,5 @@
 type Row = string[];
 export type Board = Row[];
-
-
-//export const PlayerB = "B";
-//export const PlayerW = "W";
 export type Player = "B" | "W";
 
 const initialBoard: Board = [
@@ -36,6 +32,7 @@ export class BoardGame {
     }
 }
 
+
 export class Game {
     gameBoard: BoardGame;
     player: Player;
@@ -46,6 +43,11 @@ export class Game {
     }
 
     play(): Board {
-        return this.gameBoard.board;
+        const nextBoard = this.suggestNextMoves(this.gameBoard.board)
+        return nextBoard;
+    }
+
+    suggestNextMoves(board: Board): Board {
+        return board;
     }
 }

@@ -37,7 +37,7 @@ describe("Display board in a game play", function () {
         expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));
     });
 
-    test("Should suggest legal moves for the turn of player with black", function () {
+    test("Should suggest legal moves for the next turn of player with black", function () {
         // Arrange
         const board: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],
