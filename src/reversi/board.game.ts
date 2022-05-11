@@ -13,12 +13,6 @@ const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
 ];
 
-export const boardToString = (board: Board) =>
-    board.map((row) => row.join(" ").toString())
-        .join(`
-`).toString();
-
-
 
 export class BoardGame {
     board: Board;
@@ -29,10 +23,6 @@ export class BoardGame {
 
     display(): string {
        return boardToString(this.board);
-    }
-
-    suggestNextMoves(player: Player): Board {
-        return this.board;
     }
 
 }
@@ -48,14 +38,26 @@ export class Game {
     }
 
     play(): Board {
-        this.player = this.nextPlayer();
-        const nextBoard = this.gameBoard.suggestNextMoves(this.player);
+        this.player = switchPlayer(this.player);
+        const nextBoard = suggestNextMoves(this.gameBoard.board, this.player);
         return nextBoard;
     }
 
-    nextPlayer(): Player {
-        if (this.player === "B") return "W";
-        return "B";
-    }
+}
 
+
+export const boardToString = (board: Board) =>
+    board.map((row) => row.join(" ").toString())
+        .join(`
+`).toString();
+
+
+export const suggestNextMoves = (board: Board, player: Player): Board => {
+    return board;
+}
+
+
+export const switchPlayer = (player: Player): Player => {
+    if (player === "B") return "W";
+    return "B";
 }

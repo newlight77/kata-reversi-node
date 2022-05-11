@@ -1,4 +1,4 @@
-import { type Board, BoardGame, Game, boardToString, Player } from "../../src/index";
+import { type Board, BoardGame, Game, boardToString, Player, switchPlayer } from "../../src/index";
 
 
 describe("Display board in a game play", function () {
@@ -42,12 +42,9 @@ describe("Display board in a game play", function () {
         const board: Board = [];
 
         const currentPlayer = "B";
-        const boardGame = new BoardGame(board);
-        const game = new Game(boardGame, currentPlayer);
-
 
         // Act
-        const nextPlayer = game.nextPlayer();
+        const nextPlayer = switchPlayer(currentPlayer);
 
         // Assert
         expect(nextPlayer).toEqual("W");
@@ -58,12 +55,9 @@ describe("Display board in a game play", function () {
         const board: Board = [];
 
         const currentPlayer = "W";
-        const boardGame = new BoardGame(board);
-        const game = new Game(boardGame, currentPlayer);
-
 
         // Act
-        const nextPlayer = game.nextPlayer();
+        const nextPlayer = switchPlayer(currentPlayer);
 
         // Assert
         expect(nextPlayer).toEqual("B");

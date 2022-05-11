@@ -1,4 +1,4 @@
-import { type Board, BoardGame, boardToString } from "../../src/index";
+import { type Board, BoardGame, boardToString, suggestNextMoves } from "../../src/index";
 
 describe("Display board", function () {
     test("Should return an empty board", function () {
@@ -69,10 +69,9 @@ describe("Display board", function () {
         ];
 
         const playerB = "B";
-        const boardGame = new BoardGame(board);
 
         // Act
-        const displayedBoard = boardGame.suggestNextMoves(playerB);
+        const displayedBoard = suggestNextMoves(board, playerB);
 
         // Assert
         expect(boardToString(displayedBoard) ).toEqual(boardToString(expectedBoard));
