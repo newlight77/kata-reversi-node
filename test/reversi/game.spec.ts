@@ -1,9 +1,9 @@
 import { type Board, Game, displayBoard, Player, switchPlayer } from "../../src/index";
 
 
-describe("Display board in a game play", function () {
+describe("Display the board with moves in a game play", function () {
   
-    test("Should display board properly when playing", function () {
+    test("Should display suggested moves on the board for a playser", function () {
         // Arrange
         const board: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],
