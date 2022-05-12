@@ -37,13 +37,17 @@ export const displayBoard = (board: Board) =>
         .join(`
 `).toString();
 
-export const switchPlayer = (player: Player): Player => {
-    if (player === "B") return "W";
-    return "B";
-}
+export const switchPlayer = (player: Player): Player => 
+    player === "B" ? "W" : "B";
 
 export const suggestNextMoves = (board: Board, player: Player): Board => {
     const positions = findPositions(board, player);
+    const suggestedNextMoves: Position[] = [];
+
+    positions.forEach((position) => {
+          const possibleMoves = findPossibleMoves(board, position, player);
+      });
+
     return board;
 }
 
@@ -56,4 +60,10 @@ export const findPositions = (board: Board, player: Player): Position[] => {
         });
     });
     return positions;
+}
+
+const findPossibleMoves = (board: Board, position: Position, player: Player) => {
+    const possibleMoves: Position[] = [];
+
+    return possibleMoves;
 }
