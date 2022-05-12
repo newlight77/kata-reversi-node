@@ -40,6 +40,8 @@ export const displayBoard = (board: Board) =>
 export const switchPlayer = (player: Player): Player => 
     player === "B" ? "W" : "B";
 
+export const opponent = switchPlayer;
+
 export const suggestNextMoves = (board: Board, player: Player): Board => {
     const positions = findPositions(board, player);
     const suggestedNextMoves: Position[] = [];
@@ -65,21 +67,21 @@ export const findPositions = (board: Board, player: Player): Position[] => {
 export const findPossibleMoves = (board: Board, position: Position, player: Player) => {
     const possibleMoves: Position[] = [];
 
-    const moveOnRight: Position = findPossibleMovesOnRight(board, position, player);
-    if (moveOnRight) possibleMoves.push(moveOnRight);
+    const moveOnRight: Position | null = findPossibleMovesOnRight(board, position, player);
+    if (moveOnRight !== null) possibleMoves.push(moveOnRight);
 
     return possibleMoves;
 }
 
-export const findPossibleMovesOnRight = (board: Board, position: Position, player: Player) => {
+export const findPossibleMovesOnRight = (board: Board, position: Position, player: Player): Position | null => {
     let i = 1;
     let x = position.x + i;
     let y = position.y;
-    while ( guardDimension(board, x, y) ) {
-        if (board[y][x] === ".") return { x, y: y };
+    while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {
         x = position.x + ++i;
+        if (guardDimension(board, x, y) && board[y][x] === ".") return { x, y };
     }
-    return {x: 0, y: 0};
+    return null;
 }
 
 const guardDimension = (board: Board, x: number, y: number) => 
