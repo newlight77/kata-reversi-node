@@ -75,12 +75,13 @@ export const findPossibleMovesOnRight = (board: Board, position: Position, playe
     let i = 1;
     let x = position.x + i;
     let y = position.y;
-    while ( 0 <= y && y < board[x].length) {
+    while ( guardDimension(board, x, y) ) {
         if (board[y][x] === ".") return { x, y: y };
         x = position.x + ++i;
     }
     return {x: 0, y: 0};
 }
 
-
-
+const guardDimension = (board: Board, x: number, y: number) => 
+    (0 <= x && x < board[y].length) 
+    && (0 <= y && y < board.length)
