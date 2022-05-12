@@ -1,6 +1,7 @@
 type Row = string[];
 export type Board = Row[];
 export type Player = "B" | "W";
+export type Position = { x: number; y: number };
 
 const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
@@ -42,6 +43,10 @@ export const switchPlayer = (player: Player): Player => {
 }
 
 export const suggestNextMoves = (board: Board, player: Player): Board => {
-    
+    const positions = findPositions(board, player);
     return board;
+}
+
+export const findPositions = (board: Board, player: Player): Position[] => {
+    return [];
 }
