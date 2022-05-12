@@ -48,5 +48,12 @@ export const suggestNextMoves = (board: Board, player: Player): Board => {
 }
 
 export const findPositions = (board: Board, player: Player): Position[] => {
-    return [];
+    const positions: Position[] = [];
+
+    board.map((row, rowIndex) => {
+        row.map((cell, cellIndex) => {
+            cell === player ? positions.push({ x: cellIndex, y: rowIndex }) : null
+        });
+    });
+    return positions;
 }
