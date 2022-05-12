@@ -69,6 +69,8 @@ export const findPossibleMoves = (board: Board, position: Position, player: Play
 
     const moveOnRight: Position | null = findPossibleMovesOnRight(board, position, player);
     if (moveOnRight !== null) possibleMoves.push(moveOnRight);
+    const moveOnLeft: Position | null = findPossibleMovesOnLeft(board, position, player);
+    if (moveOnLeft !== null) possibleMoves.push(moveOnLeft);
 
     return possibleMoves;
 }
@@ -79,6 +81,17 @@ export const findPossibleMovesOnRight = (board: Board, position: Position, playe
     let y = position.y;
     while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {
         x = position.x + ++i;
+        if (guardDimension(board, x, y) && board[y][x] === ".") return { x, y };
+    }
+    return null;
+}
+
+export const findPossibleMovesOnLeft = (board: Board, position: Position, player: Player): Position | null => {
+    let i = -1;
+    let x = position.x + i;
+    let y = position.y;
+    while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {
+        x = position.x + --i;
         if (guardDimension(board, x, y) && board[y][x] === ".") return { x, y };
     }
     return null;
