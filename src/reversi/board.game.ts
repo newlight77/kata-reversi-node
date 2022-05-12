@@ -19,14 +19,14 @@ export class Game {
     board: Board;
     player: Player;
   
-    constructor(board: Board = initialBoard, player: Player = "B") {
+    constructor(board: Board = initialBoard, player: Player = "W") {
       this.board = board;
       this.player = player;
     }
 
     play(): Board {
-        this.player = switchPlayer(this.player);
         const nextBoard = suggestNextMoves(this.board, this.player);
+        this.player = switchPlayer(this.player);
         return nextBoard;
     }
 
@@ -48,7 +48,8 @@ export const suggestNextMoves = (board: Board, player: Player): Board => {
     let suggestedNextMoves: Position[] = [];
 
     positions.forEach((position) => {
-        suggestedNextMoves = findPossibleMoves(board, position, player);
+        const possibleMoves = findPossibleMoves(board, position, player);
+        suggestedNextMoves.push(...possibleMoves);
     });
 
     suggestedNextMoves.forEach(({ x, y }) => {

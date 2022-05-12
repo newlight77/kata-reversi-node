@@ -18,16 +18,16 @@ describe("Display board in a game play", function () {
         const expectedBoard: Board = [
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
-            [".", ".", ".", ".", "0", ".", ".", "."],
-            [".", ".", ".", "B", "W", "0", ".", "."],
-            [".", ".", "0", "W", "B", ".", ".", "."],
             [".", ".", ".", "0", ".", ".", ".", "."],
+            [".", ".", "0", "B", "W", ".", ".", "."],
+            [".", ".", ".", "W", "B", "0", ".", "."],
+            [".", ".", ".", ".", "0", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
 
-        const playerB = "B";
-        const game = new Game(board, playerB);
+        const firstPlayer = "W";
+        const game = new Game(board, firstPlayer);
 
         // Act
         const displayedBoard = game.play()
