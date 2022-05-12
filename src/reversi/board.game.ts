@@ -79,6 +79,8 @@ export const findPossibleMoves = (board: Board, position: Position, player: Play
     if (moveOnLeft !== null) possibleMoves.push(moveOnLeft);
     const moveTowardTop: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 0, toY: -1});
     if (moveTowardTop !== null) possibleMoves.push(moveTowardTop);
+    const moveTowardBottom: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 0, toY: 1});
+    if (moveTowardBottom !== null) possibleMoves.push(moveTowardBottom);
 
     return possibleMoves;
 }
