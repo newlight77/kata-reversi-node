@@ -45,8 +45,8 @@ export const suggestNextMoves = (board: Board, player: Player): Board => {
     const suggestedNextMoves: Position[] = [];
 
     positions.forEach((position) => {
-          const possibleMoves = findPossibleMoves(board, position, player);
-      });
+        const possibleMoves = findPossibleMoves(board, position, player);
+    });
 
     return board;
 }
@@ -62,7 +62,7 @@ export const findPositions = (board: Board, player: Player): Position[] => {
     return positions;
 }
 
-const findPossibleMoves = (board: Board, position: Position, player: Player) => {
+export const findPossibleMoves = (board: Board, position: Position, player: Player) => {
     const possibleMoves: Position[] = [];
 
     return possibleMoves;

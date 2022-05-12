@@ -1,4 +1,4 @@
-import { type Board, Position, displayBoard, suggestNextMoves, findPositions } from "../../src/index";
+import { type Board, Position, displayBoard, suggestNextMoves, findPositions, findPossibleMoves } from "../../src/index";
 
 describe("Display board", function () {
     test("Should display a board", function () {
@@ -76,5 +76,30 @@ describe("Display board", function () {
 
         // Assert
         expect(positions).toEqual(expectPositions);
+    });
+
+    test("Should find possible moves for a player B", function () {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", "W", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+        const expectMove: Position[] = [
+            {x:3,y:5}
+        ];
+
+        const playerB = "B";
+
+        // Act
+        const positions = findPossibleMoves(board, {x:3,y:3}, playerB);
+
+        // Assert
+        expect(positions).toEqual(expectMove);
     });
 });
