@@ -91,7 +91,7 @@ describe("Display board", function () {
             [".", ".", ".", ".", ".", ".", ".", "."],
         ];
         const expectMove: Position[] = [
-            {x:3,y:5}
+            {x:5,y:3}
         ];
 
         const playerB = "B";

@@ -65,5 +65,22 @@ export const findPositions = (board: Board, player: Player): Position[] => {
 export const findPossibleMoves = (board: Board, position: Position, player: Player) => {
     const possibleMoves: Position[] = [];
 
+    const moveOnRight: Position = findPossibleMovesOnRight(board, position, player);
+    if (moveOnRight) possibleMoves.push(moveOnRight);
+
     return possibleMoves;
 }
+
+export const findPossibleMovesOnRight = (board: Board, position: Position, player: Player) => {
+    let i = 1;
+    let x = position.x + i;
+    let y = position.y;
+    while ( 0 <= y && y < board[x].length) {
+        if (board[y][x] === ".") return { x, y: y };
+        x = position.x + ++i;
+    }
+    return {x: 0, y: 0};
+}
+
+
+
