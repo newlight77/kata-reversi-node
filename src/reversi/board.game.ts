@@ -4,6 +4,18 @@ export type Player = "B" | "W";
 export type Position = { x: number; y: number };
 export type Direction = { toX: number, toY: number};
 
+
+const directions = {
+    TO_RIGHT: { toX: 1, toY: 0 },
+    TO_LEFT: { toX: -1, toY: 0 },
+    TO_TOP: { toX: 0, toY: -1 },
+    TO_BOTTOM: { toX: 0, toY: 1 },
+    TO_TOPRIGHT: { toX: 1, toY: -1 },
+    TO_TOPLEFT: { toX: -1, toY: -1 },
+    TO_BOTTOMRIGHT: { toX: 1, toY: 1 },
+    TO_BOTTOMLEFT: { toX: -1, toY: 1 },
+};
+
 const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
     [".", ".", ".", ".", ".", ".", ".", "."],
@@ -73,23 +85,10 @@ export const findPositions = (board: Board, player: Player): Position[] => {
 export const findPossibleMoves = (board: Board, position: Position, player: Player) => {
     const possibleMoves: Position[] = [];
 
-    const moveOnRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: 0});
-    if (moveOnRight !== null) possibleMoves.push(moveOnRight);
-    const moveOnLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: 0});
-    if (moveOnLeft !== null) possibleMoves.push(moveOnLeft);
-    const moveTowardTop: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 0, toY: -1});
-    if (moveTowardTop !== null) possibleMoves.push(moveTowardTop);
-    const moveTowardBottom: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 0, toY: 1});
-    if (moveTowardBottom !== null) possibleMoves.push(moveTowardBottom);
-
-    const moveOnTopRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: -1});
-    if (moveOnTopRight !== null) possibleMoves.push(moveOnTopRight);
-    const moveOnTopLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: -1});
-    if (moveOnTopLeft !== null) possibleMoves.push(moveOnTopLeft);
-    const moveTowardBottomRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: 1});
-    if (moveTowardBottomRight !== null) possibleMoves.push(moveTowardBottomRight);
-    const moveTowardBottomLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: 1});
-    if (moveTowardBottomLeft !== null) possibleMoves.push(moveTowardBottomLeft);
+    Object.values(directions).forEach(({ toX, toY }) => {
+        const move: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX, toY});
+        if (move !== null) possibleMoves.push(move);    
+    });
 
     return possibleMoves;
 }
