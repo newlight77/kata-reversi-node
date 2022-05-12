@@ -2,7 +2,7 @@ type Row = string[];
 export type Board = Row[];
 export type Player = "B" | "W";
 export type Position = { x: number; y: number };
-export type Direction = { toX: number, toY: number};
+type Direction = { toX: number, toY: number};
 
 
 const directions = {
@@ -86,7 +86,7 @@ export const findPossibleMoves = (board: Board, position: Position, player: Play
     return possibleMoves;
 }
 
-export const findPossibleMovesOnByDirection = (board: Board, position: Position, player: Player, direction: Direction): Position | null => {
+const findPossibleMovesOnByDirection = (board: Board, position: Position, player: Player, direction: Direction): Position | null => {
     let x = position.x + direction.toX;
     let y = position.y + direction.toY;
     while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {

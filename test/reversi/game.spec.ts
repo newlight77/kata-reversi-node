@@ -1,4 +1,5 @@
-import { type Board, Game, displayBoard, Player, switchPlayer } from "../../src/index";
+import { type Board, Game, Player } from "../../src/index";
+import { displayBoard, switchPlayer } from "../../src/index";
 
 
 describe("Display the board with moves in a game play", function () {

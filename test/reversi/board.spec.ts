@@ -1,4 +1,5 @@
-import { type Board, Position, displayBoard, suggestNextMoves, findPositions, findPossibleMoves } from "../../src/index";
+import { type Board, Position } from "../../src/index";
+import { displayBoard, suggestNextMoves, findPositions, findPossibleMoves } from "../../src/index";
 
 describe("Display board", function () {
     test("Should display a board", function () {

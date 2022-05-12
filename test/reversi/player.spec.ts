@@ -1,4 +1,5 @@
-import { type Board, Player, switchPlayer } from "../../src/index";
+import { type Board, Player } from "../../src/index";
+import { switchPlayer } from "../../src/index";
 
 
 describe("Switching palyer", function () {
