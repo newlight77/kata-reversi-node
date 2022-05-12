@@ -176,4 +176,52 @@ describe("Display board", function () {
         expect(positions).toEqual(expectMove);
     });
 
+    test("Should find possible moves for a player B toward top direction", function () {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+        const expectMove: Position[] = [
+        ];
+
+        const player = "B";
+
+        // Act
+        const positions = findPossibleMoves(board, {x:3,y:3}, player);
+
+        // Assert
+        expect(positions).toEqual(expectMove);
+    });
+
+    test("Should find possible moves for a player W toward top direction", function () {
+        // Arrange
+        const board: Board = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", "B", ".", ".", ".", "."],
+            [".", ".", ".", "W", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+        ];
+        const expectMove: Position[] = [
+            {x:3, y:2}
+        ];
+
+        const player = "W";
+
+        // Act
+        const positions = findPossibleMoves(board, {x:3,y:4}, player);
+
+        // Assert
+        expect(positions).toEqual(expectMove);
+    });
 });
