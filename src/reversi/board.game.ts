@@ -82,6 +82,15 @@ export const findPossibleMoves = (board: Board, position: Position, player: Play
     const moveTowardBottom: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 0, toY: 1});
     if (moveTowardBottom !== null) possibleMoves.push(moveTowardBottom);
 
+    const moveOnTopRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: -1});
+    if (moveOnTopRight !== null) possibleMoves.push(moveOnTopRight);
+    const moveOnTopLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: -1});
+    if (moveOnTopLeft !== null) possibleMoves.push(moveOnTopLeft);
+    const moveTowardBottomRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: 1});
+    if (moveTowardBottomRight !== null) possibleMoves.push(moveTowardBottomRight);
+    const moveTowardBottomLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: 1});
+    if (moveTowardBottomLeft !== null) possibleMoves.push(moveTowardBottomLeft);
+
     return possibleMoves;
 }
 
