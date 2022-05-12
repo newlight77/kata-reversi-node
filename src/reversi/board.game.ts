@@ -2,6 +2,7 @@ type Row = string[];
 export type Board = Row[];
 export type Player = "B" | "W";
 export type Position = { x: number; y: number };
+export type Direction = { toX: number, toY: number};
 
 const initialBoard: Board = [
     [".", ".", ".", ".", ".", ".", ".", "."],
@@ -67,31 +68,20 @@ export const findPositions = (board: Board, player: Player): Position[] => {
 export const findPossibleMoves = (board: Board, position: Position, player: Player) => {
     const possibleMoves: Position[] = [];
 
-    const moveOnRight: Position | null = findPossibleMovesOnRight(board, position, player);
+    const moveOnRight: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: 1, toY: 0});
     if (moveOnRight !== null) possibleMoves.push(moveOnRight);
-    const moveOnLeft: Position | null = findPossibleMovesOnLeft(board, position, player);
+    const moveOnLeft: Position | null = findPossibleMovesOnByDirection(board, position, player, { toX: -1, toY: 0});
     if (moveOnLeft !== null) possibleMoves.push(moveOnLeft);
 
     return possibleMoves;
 }
 
-export const findPossibleMovesOnRight = (board: Board, position: Position, player: Player): Position | null => {
-    let i = 1;
-    let x = position.x + i;
-    let y = position.y;
+export const findPossibleMovesOnByDirection = (board: Board, position: Position, player: Player, direction: Direction): Position | null => {
+    let x = position.x + direction.toX;
+    let y = position.y + direction.toY;
     while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {
-        x = position.x + ++i;
-        if (guardDimension(board, x, y) && board[y][x] === ".") return { x, y };
-    }
-    return null;
-}
-
-export const findPossibleMovesOnLeft = (board: Board, position: Position, player: Player): Position | null => {
-    let i = -1;
-    let x = position.x + i;
-    let y = position.y;
-    while ( guardDimension(board, x, y) && board[y][x] === opponent(player) ) {
-        x = position.x + --i;
+        x += direction.toX;
+        y += direction.toY;
         if (guardDimension(board, x, y) && board[y][x] === ".") return { x, y };
     }
     return null;
