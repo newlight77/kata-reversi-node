@@ -56,18 +56,11 @@ export const switchPlayer = (player: Player): Player =>
 export const opponent = switchPlayer;
 
 export const suggestNextMoves = (board: Board, player: Player): Board => {
-    const positions = findPositions(board, player);
-    let suggestedNextMoves: Position[] = [];
-
-    positions.forEach((position) => {
-        const possibleMoves = findPossibleMoves(board, position, player);
-        suggestedNextMoves.push(...possibleMoves);
-    });
-
-    suggestedNextMoves.forEach(({ x, y }) => {
-        board[y][x] = "0";
-    });
-
+    findPositions(board, player)
+        .flatMap((position) => findPossibleMoves(board, position, player))
+        .forEach(({ x, y }) => {
+            board[y][x] = "0";
+        });
     return board;
 }
 
