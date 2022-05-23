@@ -1,9 +1,10 @@
-import { type Board, Game, Player } from "../../src/index";
-import { displayBoard, switchPlayer } from "../../src/index";
+import type { Board } from "../../src/index";
+import { Game } from "../../src/index";
+import { displayBoard } from "../../src/index";
 
 
 describe("Display the board with moves in a game play", function () {
-  
+
     test("Should display suggested moves on the board for a playser", function () {
         // Arrange
         const board: Board = [
@@ -37,4 +38,4 @@ describe("Display the board with moves in a game play", function () {
         expect(displayBoard(displayedBoard) ).toEqual(displayBoard(expectedBoard));
     });
 
-  });
+});

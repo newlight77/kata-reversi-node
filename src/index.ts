@@ -1,5 +1,7 @@
-import { Board, Game, Player, Position } from "./reversi/board.game";
+import type { Board, Player, Position } from "./reversi/board.game";
+import { Game } from "./reversi/board.game";
 import { displayBoard, switchPlayer, suggestNextMoves, findPositions, findPossibleMoves } from "./reversi/board.game";
 
-export { Board, Game, Player, Position };
+export type { Board, Player, Position };
+export { Game };
 export { displayBoard, switchPlayer, suggestNextMoves, findPositions, findPossibleMoves };

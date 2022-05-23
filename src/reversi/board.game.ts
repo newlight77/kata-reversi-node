@@ -1,6 +1,11 @@
-type Row = string[];
-export type Board = Row[];
+import { EOL } from "os";
+
+type EMPTY = ".";
+type POSSIBLE_MOVE = "0";
 export type Player = "B" | "W";
+type Cell = EMPTY | POSSIBLE_MOVE | Player;
+export type Board = Cell[][];
+
 export type Position = { x: number; y: number };
 type Direction = { toX: number, toY: number};
 
@@ -30,10 +35,10 @@ const initialBoard: Board = [
 export class Game {
     board: Board;
     player: Player;
-  
+
     constructor(board: Board = initialBoard, player: Player = "W") {
-      this.board = board;
-      this.player = player;
+        this.board = board;
+        this.player = player;
     }
 
     play(): Board {
@@ -46,9 +51,9 @@ export class Game {
 
 
 export const displayBoard = (board: Board) =>
-    board.map((row) => row.join(" ").toString())
-        .join(`
-`).toString();
+    board
+        .map((row) => row.join(" "))
+        .join(EOL);
 
 export const switchPlayer = (player: Player): Player => 
     player === "B" ? "W" : "B";
@@ -67,8 +72,8 @@ export const suggestNextMoves = (board: Board, player: Player): Board => {
 export const findPositions = (board: Board, player: Player): Position[] => {
     const positions: Position[] = [];
 
-    board.map((row, rowIndex) => {
-        row.map((cell, cellIndex) => {
+    board.forEach((row, rowIndex) => {
+        row.forEach((cell, cellIndex) => {
             cell === player ? positions.push({ x: cellIndex, y: rowIndex }) : null
         });
     });
