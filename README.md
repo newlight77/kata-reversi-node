@@ -1,16 +1,16 @@
-# About // Kata Reversi
+# Kata Reversi NodeJs
 
 Here is the source of the Kata : [kata Reversi](https://codingdojo.org/kata/Reversi/)
 
 This Kata was introduced to me by [LaurentBossavit](https://codingdojo.org/people/LaurentBossavit) – [EmilyBache](https://codingdojo.org/people/EmilyBache)
 
-### Problem Description
+## Problem Description
 
 Reversi is a board game for two players. More information can be found on Wikipedia en.wikipedia.org/wiki/Reversi . This Kata is to write a program that takes a current board position together with information about whose turn it is, and returns a list of the legal moves for that player. A move is only legal if it results in at least one of the opponent’s counters being flipped.
 
 Suggested Test Cases
 
-```
+```txt
 ........
 ........
 ........
@@ -28,7 +28,7 @@ You could either output the possible moves as co-ordinates (columns labelled A -
 
 or graphically like this:
 
-```
+```txt
 ........
 ........
 ....0...
@@ -40,22 +40,30 @@ or graphically like this:
 B
 ```
 
-### Development
+## Development
+
+Install dependencies :
+
+```bash
+npm install --dev
+```
 
 Compile :
 
-```
-yarn build
+```bash
+npm run build
 ```
 
 To launch :
 
-```
-yarn start
+```bash
+npm start
 ```
 
 To run tests:
 
-```
-yarn test [--watch]
+```bash
+npm test
+#or
+npm run test:watch
 ```
